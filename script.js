@@ -1,5 +1,13 @@
 "use strict";
 
+//TODO
+//Fixed heighed shopinglistcontainer
+//stickey container
+//overflow-y: scroll
+//totalprice and amount of items in final div after shoppinglis.foreach
+
+
+
 const products = [
   {
     productId: 1,
@@ -132,25 +140,41 @@ products.forEach(product => {
   addToCardButton.addEventListener("click", (event) => {
     // stop bubbling --> making stuff not click through
     event.preventDefault();
-    shoppingList.push({productName: product.productName, quantity: 1, price: product.price})
 
-    // dit moet hier uit
-    // dit moet hier uit
-    const shoppingListItem = document.createElement("div");
-    shoppingListItem.classList.add("shopping-list-item")
-    shoppingListItem.innerHTML =
-      `
+    const isItemInShoppingList = shoppingList.find(item => item.productName === product.productName);
+    if (!isItemInShoppingList){
+      shoppingList.push({productName: product.productName, quantity: 1, price: product.price})     //puts object into array
+
+    }
+    else
+    {
+      isItemInShoppingList.quantity += 1;
+    }
+
+    //clear shoppinglist
+    shoppingListContainer.innerHTML = "";
+
+
+    let totalPrice;
+    //rebuild shoppinglist with updated array of items
+    shoppingList.forEach(shoppingList => {
+      totalPrice = shoppingList.price * shoppingList.quantity;
+      const shoppingListItem = document.createElement("div");
+      shoppingListItem.classList.add("shopping-list-item")
+      shoppingListItem.innerHTML =
+          `
           <h2 class="product-name">${shoppingList.productName}</h2>
-          <h3 class="price">€${shoppingList.price}</h3>     
-    `
-    shoppingListContainer.appendChild(shoppingListItem)
-    //dit moet hier uit
-    //dit moet hier uit
-    console.log("hihi")});
-
-
-
-
+          <article>
+            <h3 class="price">€${shoppingList.price}</h3>
+            <h3 class="quantity">x${shoppingList.quantity}</h3>
+            <h3 class="total-price">€${totalPrice.toFixed(2)}</h3>
+<!--            <button class="remove-from-cart">remove</button>-->
+          </article>
+            
+          `
+      shoppingListContainer.appendChild(shoppingListItem);
+    });
+  });
 
   const linkVariable = document.createElement("a");
   linkVariable.href = product.href;
@@ -174,22 +198,4 @@ products.forEach(product => {
   productContainer.appendChild(linkVariable);
   allProductsContainer.appendChild(productContainer);
 
-
-
 });
-
-
-// let shoppingCartButton = document.querySelector('#shopping-cart-button');
-// let products = document.querySelectorAll(".product-container h3")
-// console.log(products[0]);
-// let counter = 0;
-//
-// function addOnClick() {
-//   counter += 1;
-// }
-//
-// shoppingCartButton.addEventListener("click", addOnClick)
-//
-// // shoppingCartButton.addEventListener("click", "function");
-// // function has to be replaced with a function u want the eventlistener to work with
-
