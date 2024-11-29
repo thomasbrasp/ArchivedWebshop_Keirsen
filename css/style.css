@@ -117,7 +117,7 @@ body {
         grid-template-rows: auto 1fr auto;
         grid-template-areas:
         "header header header"
-        " aside   main    .   "
+        " .   main    aside   "
         "footer footer footer";
     }
 }
@@ -175,9 +175,39 @@ main {
  *                ASIDE                    *
  *******************************************/
 
-aside {
+aside .contact{
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
     grid-area: aside;
     margin: auto auto;
+    border: 1px solid black;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--spacing-xs);
+}
+
+.add-to-cart {
+    background-color: var(--color-accent);
+    cursor: pointer;
+    padding: 5px;
+}
+
+.shopping-list-container {
+    width: 200px;
+    margin-right: 10px;
+    background-color: red;
+    border: 1px solid black;
+    grid-area: aside;
+}
+
+.shopping-list-item {
+    background-color: blue;
 }
 
 
@@ -196,15 +226,15 @@ footer {
  *      PRODUCT CONTAINER AND STYLING      *
  *******************************************/
 
-.allproducts-container{
+.all-products-container{
     display: flex;
     box-shadow: none;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: var(--spacing-lg);
+    padding-top: var(--spacing-md);
 }
-
 
 
 .product-container {
@@ -214,8 +244,12 @@ footer {
     align-items: center;
     width: 100%;
     max-width: 325px;
+    overflow-y: hidden;
+    max-height: 400px;
+
     aspect-ratio: 1/1.25;
-    box-shadow: var(--shadow-large);
+    border: 1px solid #ccc;
+    box-shadow: var(--shadoasw-large);
     border-radius: var(--border-radius-small);
     position: relative;
 
@@ -238,6 +272,18 @@ footer {
         padding: var(--spacing-sm)
     }
 
+    a {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    p {
+        max-height: 75px;
+        overflow-y: hidden;
+    }
+
 }
 
 /*******************************************
@@ -249,7 +295,7 @@ footer {
     padding: var(--spacing-md);
     border-radius: var(--border-radius-small);
     box-shadow: var(--shadow-large);
-    
+
     img {
         max-width: 716px;
     }
