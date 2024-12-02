@@ -225,6 +225,10 @@ aside .contact{
     padding: 5px;
 }
 
+.remove-from-cart {
+    cursor: pointer;
+}
+
 .shopping-list-container {
     width: 200px;
     height: 800px;
