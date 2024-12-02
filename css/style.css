@@ -7,6 +7,7 @@
     --color-secondary: #686D76;
     --color-tertiary: #373A40;
     --color-accent: #DC5F00;
+    --color-accent-fifty: rgba(220, 95, 0, 0.50);
     /* typography */
     --font-size-base: 1rem;
     --font-size-small: 0.875rem;
@@ -195,6 +196,11 @@ main {
 /*******************************************
  *                ASIDE                    *
  *******************************************/
+aside {
+    border: 1px solid black;
+    position: sticky;
+    top: 50px;
+}
 
 aside .contact{
     width: 100px;
@@ -223,8 +229,8 @@ aside .contact{
     width: 200px;
     height: 800px;
     margin-right: 10px;
-    position: sticky;
-    top: 0;
+
+
     /*background-color: red;*/
     /*border: 1px solid black;*/
     box-shadow: var(--shadow-large);
@@ -235,6 +241,10 @@ aside .contact{
     border: 1px solid #ccc;
     box-shadow: var(--shadow-large);
     background-color: var(--color-accent);
+    &:nth-of-type(even){
+        background-color: var(--color-accent-fifty);
+
+    }
 }
 
 .price-quantity{

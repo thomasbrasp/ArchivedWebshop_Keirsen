@@ -1,14 +1,9 @@
 "use strict";
 
 //TODO
-//Fixed heighed shopinglistcontainer
-//stickey container
-//overflow-y: scroll
-//totalprice and amount of items in final div after shoppinglis.foreach
-
 
 /*******************************************
- *            objects of products          *
+ *         variables and objects           *
  *******************************************/
 const products = [
   {
@@ -122,9 +117,7 @@ const products = [
   }
 ];
 const shoppingList = [];
-
 const shoppingListContainer = document.querySelector(".shopping-list-container");
-
 
 
 //get the container where all the product-container's should be placed in.
@@ -145,50 +138,66 @@ products.forEach(product => {
     event.preventDefault();
 
     const isItemInShoppingList = shoppingList.find(item => item.productName === product.productName);
-    if (!isItemInShoppingList){
-      shoppingList.push({productName: product.productName, quantity: 1, price: product.price})     //puts object into array
 
+    if (!isItemInShoppingList){
+
+      shoppingList.push({productName: product.productName, quantity: 1, price: product.price})     //puts object into array
     }
     else
     {
       isItemInShoppingList.quantity += 1;
     }
 
-    //clear shoppinglist
-    shoppingListContainer.innerHTML = "";
-
-
-    let totalPrice;
 
     /*******************************************
-     *            shoppinglist                 *
+     *            shopping list                 *
      *******************************************/
-    //rebuild shoppinglist with updated array of items
+    //clear shopping list before rewriting it
+    shoppingListContainer.innerHTML = "";
+    let totalPriceList = 0;
+    //rebuild shopping list with updated array of items
     shoppingList.forEach(shoppingList => {
-      totalPrice = shoppingList.price * shoppingList.quantity;
+      let totalPriceItems = (shoppingList.price * shoppingList.quantity); //calculate object.quantity * object.price
       const shoppingListItem = document.createElement("div");
-      shoppingListItem.classList.add("shopping-list-item")
+      shoppingListItem.classList.add("shopping-list-item");
+
+      //BEWARE it's easy to overlook the backticks
       shoppingListItem.innerHTML =
-          `
-          <h2 class="product-name">${shoppingList.productName}</h2>
+          `<h2 class="product-name">${shoppingList.productName}</h2>
           <article class="price-quantity">         
             <h3 class="price">€${shoppingList.price}</h3>
             <h3 class="quantity">x${shoppingList.quantity}</h3>
-<!--            <h3 class="total-price">€${totalPrice.toFixed(2)}</h3>-->
+<!--            <h3 class="total-price">€${totalPriceItems.toFixed(2)}</h3>-->
 <!--            <button class="remove-from-cart">remove</button>-->
-          </article>
-            
-          `
+          </article>`
+      totalPriceList += totalPriceItems; //before loop ends we store the calculated price into the grand total, this way we use the value before it gets reset.
       shoppingListContainer.appendChild(shoppingListItem);
-    });
+    }); //end of shoppingList.forEach
+
+    //after adding each unique product to shopping list we also add a container with total price
+    const shoppingListTotal = document.createElement("div");
+    shoppingListTotal.classList.add("shopping-list-total");
+
+    //after creating the container and giving it a class we write the html
+
+    shoppingListTotal.innerHTML =
+      `<h2 class="total-price">${totalPriceList.toFixed(2)}</h2>
+      `
+    shoppingListContainer.appendChild(shoppingListTotal);
+
+
   });
 
 
   /*******************************************
    *               products                  *
    *******************************************/
+  //first we create the attribute
   const linkVariable = document.createElement("a");
+  //then we give it the proper href that's located in the object
   linkVariable.href = product.href;
+  //inside this attribute we write the html like we would in html.
+  //I chose to make the effort putting it here, since i dislike checking 12 times same code.
   linkVariable.innerHTML =
     `
       <div class="img-container">
