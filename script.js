@@ -1,6 +1,12 @@
 "use strict";
 
 //TODO
+//add remove 1x button
+//add dropdown menu for quantity
+//add remove item
+//sticky shoppinlist
+//complete feedbackform
+
 
 /*******************************************
  *         variables and objects           *
@@ -130,6 +136,9 @@ products.forEach(product => {
   const buttonContainer = document.createElement("div");
   buttonContainer.classList.add('button-container');
 
+
+
+
   const addToCardButton = document.createElement("button");
   addToCardButton.classList.add("add-to-cart");
   addToCardButton.textContent = "addtocard";
@@ -181,10 +190,9 @@ products.forEach(product => {
     //after creating the container and giving it a class we write the html
 
     shoppingListTotal.innerHTML =
-      `<h2 class="total-price">${totalPriceList.toFixed(2)}</h2>
+      `<h2 class="total-price">€${totalPriceList.toFixed(2)}</h2>
       `
     shoppingListContainer.appendChild(shoppingListTotal);
-
 
   });
 

@@ -253,6 +253,12 @@ aside .contact{
     padding: var(--spacing-xs);
 }
 
+.total-price {
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+}
+
 
 /*******************************************
  *                FOOTER                   *
