@@ -241,7 +241,7 @@ aside .contact{
     grid-area: aside;
 }
 
-.shopping-list-item {
+.shopping-cart-item {
     border: 1px solid #ccc;
     box-shadow: var(--shadow-large);
     background-color: var(--color-accent);

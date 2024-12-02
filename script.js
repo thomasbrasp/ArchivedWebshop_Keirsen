@@ -12,7 +12,17 @@
 //  Als een gebruiker nog eens op het symbool klikt, gaat het product uit
 // de verlanglijst.
 
+// const producten = [{voornaam: "Thomas", achternaam: "Keirsen", totaal: 10}, {voornaam: "Indy", achternaam: "Keirsen", totaal: 20}]
+// const totaal = producten.reduce((acc, curr) => acc + curr.totaal, 0);
+//
+// console.log(totaal);
 
+// const producten = [{voornaam: "Thomas", achternaam: "Keirsen", type: "rode kaars", totaal: 10}, {voornaam: "Indy", achternaam: "Keirsen", type: "rode kaars", totaal: 20}, {voornaam: "Indy", achternaam: "Keirsen", type: "gele kaars", totaal: 20}]
+// const iets = producten.reduce((acc, curr) => ({...acc, [curr.type]: (acc[curr.type] ?? 0) + curr.totaal}), {});
+//
+// console.log(iets);
+
+//TODO productName and productSize/type different element
 //TODO remove from cart
 //TODO make shopping list sticky
 //TODO wishlists
@@ -22,6 +32,7 @@
 //TODO design total shopping cart
 //TODO add sub total | VAT | price to pay
 
+//thoughts wrapped
 //THOUGHTS (bigger picture)
 //add remove 1x button
 //add dropdown menu for quantity
@@ -63,244 +74,143 @@
  *         variables and objects           *
  *******************************************/
 const products = [
-  {
-    productId: 1,
-    productName: "Cuban Tobacco - 30cl",
-    price: 11.11,
-    imgSrcMain: "images/Products/IMG_2398.JPG",
-    imgSrcHover: "images/Products/IMG_2400.JPG",
-    imgAlt: "Cuban Tobacco",
-    href: "CubanTobacco.html",
-    description: "Een luxe geur van rijke tabak en traditie. Perfect voor een warme, verfijnde sfeer."
-  },
-  {
-    productId: 2,
-    productName: "Sandalwood - 30cl",
-    price: 22.22,
-    imgSrcMain: "images/Products/IMG_2401.JPG",
-    imgSrcHover: "images/Products/IMG_2405.JPG",
-    imgAlt: "Sandalwood",
-    href: "Sandalwood.html",
-    description: "Een warme, houtachtige geur die sereniteit brengt. Ideaal voor een rustgevende ambiance."
-  },
-  {
-    productId: 3,
-    productName: "Lemongrass - 40cl",
-    price: 33.33,
-    imgSrcMain: "images/Products/IMG_2402.JPG",
-    imgSrcHover: "images/Products/IMG_2404.JPG",
-    imgAlt: "Lemongrass",
-    href: "Lemongrass.html",
-    description: "Een frisse, citrusachtige geur die energie geeft. Perfect om elke ruimte op te frissen."
-  },
-  {
-    productId: 4,
-    productName: "Clean Cotton - 30cl",
-    price: 44.44,
-    imgSrcMain: "images/Products/IMG_2387.JPG",
-    imgSrcHover: "images/Products/IMG_2416.JPG",
-    imgAlt: "Clean Cotton",
-    href: "CleanCotton.html",
-    description: "Een frisse geur van schoon linnen. Brengt een gevoel van puurheid en kalmte."
-  },
-  {
-    productId: 5,
-    productName: "Lavender - 50cl",
-    price: 55.55,
-    imgSrcMain: "images/Products/IMG_2425.JPG",
-    imgSrcHover: "images/Products/IMG_2428.JPG",
-    imgAlt: "Lavender",
-    href: "Lavender.html",
-    description: "Een klassieke bloemengeur die ontspanning biedt. Ideaal voor rust en zelfzorg."
-  },
-  {
-    productId: 6,
-    productName: "Vanilla Bean - 35cl",
-    price: 66.66,
-    imgSrcMain: "images/Products/IMG_2458.JPG",
-    imgSrcHover: "images/Products/IMG_2462.JPG",
-    imgAlt: "Vanilla Bean",
-    href: "VanillaBean.html",
-    description: "Een warme, romige geur die comfort brengt. Perfect voor een gezellige sfeer."
-  },
-  {
-    productId: 7,
-    productName: "Ocean Breeze - 40cl",
-    price: 77.77,
-    imgSrcMain: "images/Products/IMG_2457.JPG",
-    imgSrcHover: "images/Products/IMG_2461.JPG",
-    imgAlt: "Ocean Breeze",
-    href: "OceanBreeze.html",
-    description: "De frisse geur van de zee in huis. Ideaal voor een kalme, ontspannende ambiance."
-  },
-  {
-    productId: 8,
-    productName: "Cedar Wood - 45cl",
-    price: 88.88,
-    imgSrcMain: "images/Products/IMG_2407.JPG",
-    imgSrcHover: "images/Products/IMG_2415.JPG",
-    imgAlt: "Cedar Wood",
-    href: "CedarWood.html",
-    description: "Een rijke, aardse geur met houtachtige tonen. Perfect om rust en comfort te brengen."
-  },
-  {
-    productId: 9,
-    productName: "Eucalyptus Mint - 30cl",
-    price: 99.99,
-    imgSrcMain: "images/Products/IMG_2426.JPG",
-    imgSrcHover: "images/Products/IMG_2427.JPG",
-    imgAlt: "Eucalyptus Mint",
-    href: "EucalyptusMint.html",
-    description: "Een frisse mix van munt en eucalyptus. Zuivert de lucht en ontspant de zintuigen."
-  },
-  {
-    productId: 10,
-    productName: "Pine Forest - 40cl",
-    price: 100.00,
-    imgSrcMain: "images/Products/IMG_2401.JPG",
-    imgSrcHover: "images/Products/IMG_2405.JPG",
-    imgAlt: "Pine Forest",
-    href: "PineForest.html",
-    description: "De geur van een serene dennenbos. Ideaal voor een winterse, gezellige ambiance."
-  },
-  {
-    productId: 11,
-    productName: "Midnight Jasmine - 35cl",
-    price: 49.99,
-    imgSrcMain: "images/Products/IMG_2401.JPG",
-    imgSrcHover: "images/Products/IMG_2405.JPG",
-    imgAlt: "Midnight Jasmine",
-    href: "MidnightJasmine.html",
-    description: "Een bloemige geur met hints van oranjebloesem. Zorgt voor een romantische sfeer."
-  },
-  {
-    productId: 12,
-    productName: "Cinnamon Spice - 30cl",
-    price: 39.99,
-    imgSrcMain: "images/Products/IMG_2401.JPG",
-    imgSrcHover: "images/Products/IMG_2405.JPG",
-    imgAlt: "Cinnamon Spice",
-    href: "CinnamonSpice.html",
-    description: "Warme tonen van kaneel en kruiden. Perfect voor gezellige en feestelijke momenten."
-  }
-];
-const shoppingList = [];
-const shoppingListContainer = document.querySelector(".shopping-list-container");
-
-
-//get the container where all the product-container's should be placed in.
-const allProductsContainer = document.querySelector(".all-products-container");
-console.log("hihi")
-products.forEach(product => {
-  const productContainer = document.createElement("div");
-  productContainer.classList.add('product-container');
-
-  const buttonContainer = document.createElement("div");
-  buttonContainer.classList.add('button-container');
-
-  const addToCardButton = document.createElement("button");
-  addToCardButton.classList.add("add-to-cart");
-  addToCardButton.textContent = "addtocard";
-  addToCardButton.addEventListener("click", (event) => {
-    // stop bubbling --> making stuff not click through
-    event.preventDefault();
-
-    const isItemInShoppingList = shoppingList.find(item => item.productName === product.productName);
-
-
-    if (!isItemInShoppingList){
-
-      shoppingList.push({productName: product.productName, quantity: 1, price: product.price, productId: product.productId})     //puts object into array
-    }
-    else
     {
-      isItemInShoppingList.quantity += 1;
+        productName: "Cuban Tobacco - 30cl",
+        price: 11.11,
+        imgSrcMain: "images/Products/IMG_2398.JPG",
+        imgSrcHover: "images/Products/IMG_2400.JPG",
+        imgAlt: "Cuban Tobacco",
+        href: "CubanTobacco.html",
+        description: "Een luxe geur van rijke tabak en traditie. Perfect voor een warme, verfijnde sfeer."
+    },
+    {
+        productName: "Sandalwood - 30cl",
+        price: 22.22,
+        imgSrcMain: "images/Products/IMG_2401.JPG",
+        imgSrcHover: "images/Products/IMG_2405.JPG",
+        imgAlt: "Sandalwood",
+        href: "Sandalwood.html",
+        description: "Een warme, houtachtige geur die sereniteit brengt. Ideaal voor een rustgevende ambiance."
+    },
+    {
+        productName: "Lemongrass - 40cl",
+        price: 33.33,
+        imgSrcMain: "images/Products/IMG_2402.JPG",
+        imgSrcHover: "images/Products/IMG_2404.JPG",
+        imgAlt: "Lemongrass",
+        href: "Lemongrass.html",
+        description: "Een frisse, citrusachtige geur die energie geeft. Perfect om elke ruimte op te frissen."
+    },
+    {
+        productName: "Clean Cotton - 30cl",
+        price: 44.44,
+        imgSrcMain: "images/Products/IMG_2387.JPG",
+        imgSrcHover: "images/Products/IMG_2416.JPG",
+        imgAlt: "Clean Cotton",
+        href: "CleanCotton.html",
+        description: "Een frisse geur van schoon linnen. Brengt een gevoel van puurheid en kalmte."
+    },
+    {
+        productName: "Lavender - 50cl",
+        price: 55.55,
+        imgSrcMain: "images/Products/IMG_2425.JPG",
+        imgSrcHover: "images/Products/IMG_2428.JPG",
+        imgAlt: "Lavender",
+        href: "Lavender.html",
+        description: "Een klassieke bloemengeur die ontspanning biedt. Ideaal voor rust en zelfzorg."
+    },
+    {
+        productName: "Vanilla Bean - 35cl",
+        price: 66.66,
+        imgSrcMain: "images/Products/IMG_2458.JPG",
+        imgSrcHover: "images/Products/IMG_2462.JPG",
+        imgAlt: "Vanilla Bean",
+        href: "VanillaBean.html",
+        description: "Een warme, romige geur die comfort brengt. Perfect voor een gezellige sfeer."
+    },
+    {
+        productName: "Ocean Breeze - 40cl",
+        price: 77.77,
+        imgSrcMain: "images/Products/IMG_2457.JPG",
+        imgSrcHover: "images/Products/IMG_2461.JPG",
+        imgAlt: "Ocean Breeze",
+        href: "OceanBreeze.html",
+        description: "De frisse geur van de zee in huis. Ideaal voor een kalme, ontspannende ambiance."
+    },
+    {
+        productName: "Cedar Wood - 45cl",
+        price: 88.88,
+        imgSrcMain: "images/Products/IMG_2407.JPG",
+        imgSrcHover: "images/Products/IMG_2415.JPG",
+        imgAlt: "Cedar Wood",
+        href: "CedarWood.html",
+        description: "Een rijke, aardse geur met houtachtige tonen. Perfect om rust en comfort te brengen."
+    },
+    {
+        productName: "Eucalyptus Mint - 30cl",
+        price: 99.99,
+        imgSrcMain: "images/Products/IMG_2426.JPG",
+        imgSrcHover: "images/Products/IMG_2427.JPG",
+        imgAlt: "Eucalyptus Mint",
+        href: "EucalyptusMint.html",
+        description: "Een frisse mix van munt en eucalyptus. Zuivert de lucht en ontspant de zintuigen."
+    },
+    {
+        productName: "Pine Forest - 40cl",
+        price: 100.00,
+        imgSrcMain: "images/Products/IMG_2401.JPG",
+        imgSrcHover: "images/Products/IMG_2405.JPG",
+        imgAlt: "Pine Forest",
+        href: "PineForest.html",
+        description: "De geur van een serene dennenbos. Ideaal voor een winterse, gezellige ambiance."
+    },
+    {
+        productName: "Midnight Jasmine - 35cl",
+        price: 49.99,
+        imgSrcMain: "images/Products/IMG_2401.JPG",
+        imgSrcHover: "images/Products/IMG_2405.JPG",
+        imgAlt: "Midnight Jasmine",
+        href: "MidnightJasmine.html",
+        description: "Een bloemige geur met hints van oranjebloesem. Zorgt voor een romantische sfeer."
+    },
+    {
+        productName: "Cinnamon Spice - 30cl",
+        price: 39.99,
+        imgSrcMain: "images/Products/IMG_2401.JPG",
+        imgSrcHover: "images/Products/IMG_2405.JPG",
+        imgAlt: "Cinnamon Spice",
+        href: "CinnamonSpice.html",
+        description: "Warme tonen van kaneel en kruiden. Perfect voor gezellige en feestelijke momenten."
     }
+]; //12 products
+
+const shoppingCart = [];
+const shoppingCartContainer = document.querySelector(".shopping-list-container");
+//get the container where all the product-container's should be placed in.
+const containerWithAllProducts = document.querySelector(".all-products-container");
 
 
-    /*******************************************
-     *            shopping list                 *
-     *******************************************/
-    //clear shopping list before rewriting it
-    shoppingListContainer.innerHTML = "";
-    let totalPriceList = 0;
+/*******************************************
+ *               products                  *
+ *******************************************/
+products.forEach(product => {
+    const productContainer = document.createElement("div");
+    productContainer.classList.add('product-container');
 
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add('button-container');
 
+    const addToCartButton = document.createElement("button");
+    addToCartButton.classList.add("add-to-cart");
+    addToCartButton.textContent = "Toevoegen";
 
-    //rebuild shopping list with updated array of items
-    shoppingList.forEach(shoppingList => {
-      let totalPriceItems = (shoppingList.price * shoppingList.quantity); //calculate object.quantity * object.price
-      const shoppingListItem = document.createElement("div");
-      shoppingListItem.classList.add("shopping-list-item");
-
-
-      const removeButton = document.createElement("button");
-      removeButton.classList.add("remove-from-cart");
-      removeButton.textContent = "remove";
-
-      //BEWARE it's easy to overlook the backticks
-      shoppingListItem.innerHTML =
-          `<h2 class="product-name">${shoppingList.productName}</h2>
-          <article class="price-quantity">         
-            <h3 class="price">€${shoppingList.price}</h3>
-            <h3 class="quantity">x${shoppingList.quantity}</h3>
-            <h3 class="total-price">€${totalPriceItems.toFixed(2)}</h3>
-<!--            <button class="remove-from-cart">remove</button>-->
-          </article>          
-          `
-      shoppingListItem.appendChild(removeButton); //append the created remove button on the item container.
-
-
-      // TODO broken has to be fixed, remove button
-      // removeButton.addEventListener("click", (event) => {
-      //   event.preventDefault();
-      //   if (isItemInShoppingList){
-      //     console.log("if")
-      //     if (isItemInShoppingList.quantity > 1){
-      //       isItemInShoppingList.quantity -= 1;
-      //       console.log("ifif")
-      //     }
-      //   } else {
-      //     console.log("else")
-      //   }
-      //
-      // })
-
-      totalPriceList += totalPriceItems; //before loop ends we store the calculated price into the grand total, this way we use the value before it gets reset.
-      shoppingListContainer.appendChild(shoppingListItem);
-
-    }); //end of shoppingList.forEach
-
-    //after adding each unique product to shopping list we also add a container with total price
-    const shoppingListTotal = document.createElement("div");
-    shoppingListTotal.classList.add("shopping-list-total");
-
-    //after creating the container and giving it a class we write the html
-
-    shoppingListTotal.innerHTML =
-      `<h2 class="total-price">€${totalPriceList.toFixed(2)}</h2>
-      `
-    shoppingListContainer.appendChild(shoppingListTotal);
-
-    //remove button
-
-
-
-
-  });
-
-
-  /*******************************************
-   *               products                  *
-   *******************************************/
-  //first we create the attribute
-  const linkVariable = document.createElement("a");
-  //then we give it the proper href that's located in the object
-  linkVariable.href = product.href;
-  //inside this attribute we write the html like we would in html.
-  //I chose to make the effort putting it here, since i dislike checking 12 times same code.
-  linkVariable.innerHTML =
-    `
+    //first we create the attribute
+    const attributeProductContainer = document.createElement("a");
+    //then we give it the proper href that's located in the object
+    attributeProductContainer.href = product.href;
+    //inside this attribute we write the html like we would in html.
+    //I chose to make the effort putting it here, since I dislike checking 12 times same code.
+    attributeProductContainer.innerHTML =`
       <div class="img-container">
         <img alt="${product.imgAlt}" class="product-image-main" src="${product.imgSrcMain}"/>
         <img alt="${product.imgAlt}" class="product-image-hover" src="${product.imgSrcHover}"/>
@@ -311,12 +221,68 @@ products.forEach(product => {
             ${product.description}
           </p>
         </div>
-      </div>
-    `;
+      </div>`;
 
-  buttonContainer.appendChild(addToCardButton);
-  linkVariable.appendChild(buttonContainer);
-  productContainer.appendChild(linkVariable);
-  allProductsContainer.appendChild(productContainer);
+    buttonContainer.appendChild(addToCartButton);
+    attributeProductContainer.appendChild(buttonContainer);
+    productContainer.appendChild(attributeProductContainer);
+    containerWithAllProducts.appendChild(productContainer);
 
-});
+    //when pressed, check if item already exists
+    //!exist > create item
+    //exists > increases quantity
+    //after if else call renderShoppingList to update result from if else
+    addToCartButton.addEventListener("click", (event) => {
+        event.preventDefault(); // stop bubbling --> making stuff not click through
+
+        const itemExists = shoppingCart.find(item => item.productName === product.productName); //bool to check if item is already in the list
+        if (!itemExists) {
+            shoppingCart.push({
+                productName: product.productName,
+                quantity: 1,
+                price: product.price,
+            });
+
+        } else {
+            itemExists.quantity += 1;
+        }
+        renderShoppingCart();
+
+    }); //end of addToCartButton.event listener
+
+}); //end products.forEach
+
+
+/*******************************************
+ *            shopping cart                *
+ *******************************************/
+function renderShoppingCart() {
+    //reset
+    shoppingCartContainer.innerHTML = ""; //clear existing items
+    let sumShoppingCartItemsPrice = 0; //reset total price for new item
+
+    shoppingCart.forEach(cartItem => {
+        const totalPriceCartItem = cartItem.price * cartItem.quantity; //
+        sumShoppingCartItemsPrice += totalPriceCartItem;
+
+        //create cartItem
+        const shoppingCartItem = document.createElement("div");
+        shoppingCartItem.classList.add("shopping-cart-item");
+        //add html within the created container
+        shoppingCartItem.innerHTML =
+            `<h2 class="product-name">${cartItem.productName}</h2>
+          <article class="price-quantity">      
+            <h3 class="price">€${cartItem.price}</h3>
+            <h3 class="quantity">x${cartItem.quantity}</h3>
+            <h3 class="total-price">€${totalPriceCartItem.toFixed(2)}</h3>
+          </article>          
+        `;//TODO change class for article accordingly
+
+        shoppingCartContainer.appendChild(shoppingCartItem);
+    }); //end of shoppingCart.forEach
+
+    //TODO add extra container here with sum of all cart items
+}
+
+
+
