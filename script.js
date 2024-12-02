@@ -1,8 +1,21 @@
 "use strict";
+//CHECKLIST
+// winkelmandje:::
+// Plaats in het aside-element op de shoppagina jouw winkelwandje.
+// Zorg ervoor dat een gebruiker vanuit deze pagina een product kan toevoegen aan het winkelmandje.
+// Als een product meermaals wordt toegevoegd, staat dit maar 1 keer in de lijst en met aanduiding van het aantal.
+//
+// wishlist:::
+// Als je op het wishlist-symbool op jouw webshop klikt, wordt dit
+// symbool “gekleurd” zodat het duidelijk is dat het product op de
+// verlanglijst staat.
+//  Als een gebruiker nog eens op het symbool klikt, gaat het product uit
+// de verlanglijst.
+
 
 //TODO remove from cart
 //TODO make shopping list sticky
-//TODO wishlist
+//TODO wishlists
 //TODO rename variables
 //TODO isolate functions
 //TODO read more about event listeners
@@ -37,6 +50,14 @@
 // total/checkout container accent color but gentle
 //make the item name in cart list the link to product page
 
+//BRAINSTORM
+//product.foreach, only items
+//event listener on add to cart
+//event listener on remove from cart
+//write logics globally, when everything works narrow down within scopes.
+//ignore visuals and style until logics work
+//fuck webtechnologie
+//wishlisted items
 
 /*******************************************
  *         variables and objects           *
