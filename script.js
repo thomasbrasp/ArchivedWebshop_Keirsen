@@ -7,7 +7,9 @@
 //totalprice and amount of items in final div after shoppinglis.foreach
 
 
-
+/*******************************************
+ *            objects of products          *
+ *******************************************/
 const products = [
   {
     productId: 1,
@@ -124,6 +126,7 @@ const shoppingList = [];
 const shoppingListContainer = document.querySelector(".shopping-list-container");
 
 
+
 //get the container where all the product-container's should be placed in.
 const allProductsContainer = document.querySelector(".all-products-container");
 console.log("hihi")
@@ -156,6 +159,10 @@ products.forEach(product => {
 
 
     let totalPrice;
+
+    /*******************************************
+     *            shoppinglist                 *
+     *******************************************/
     //rebuild shoppinglist with updated array of items
     shoppingList.forEach(shoppingList => {
       totalPrice = shoppingList.price * shoppingList.quantity;
@@ -164,10 +171,10 @@ products.forEach(product => {
       shoppingListItem.innerHTML =
           `
           <h2 class="product-name">${shoppingList.productName}</h2>
-          <article>
+          <article class="price-quantity">         
             <h3 class="price">€${shoppingList.price}</h3>
             <h3 class="quantity">x${shoppingList.quantity}</h3>
-            <h3 class="total-price">€${totalPrice.toFixed(2)}</h3>
+<!--            <h3 class="total-price">€${totalPrice.toFixed(2)}</h3>-->
 <!--            <button class="remove-from-cart">remove</button>-->
           </article>
             
@@ -176,6 +183,10 @@ products.forEach(product => {
     });
   });
 
+
+  /*******************************************
+   *               products                  *
+   *******************************************/
   const linkVariable = document.createElement("a");
   linkVariable.href = product.href;
   linkVariable.innerHTML =

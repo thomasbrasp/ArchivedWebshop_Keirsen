@@ -142,6 +142,7 @@ header, footer {
     padding: 20px;
 }
 
+
 /*******************************************
  *                HEADER                   *
  *******************************************/
@@ -220,14 +221,26 @@ aside .contact{
 
 .shopping-list-container {
     width: 200px;
+    height: 800px;
     margin-right: 10px;
-    background-color: red;
-    border: 1px solid black;
+    position: sticky;
+    top: 0;
+    /*background-color: red;*/
+    /*border: 1px solid black;*/
+    box-shadow: var(--shadow-large);
     grid-area: aside;
 }
 
 .shopping-list-item {
-    background-color: blue;
+    border: 1px solid #ccc;
+    box-shadow: var(--shadow-large);
+    background-color: var(--color-accent);
+}
+
+.price-quantity{
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-xs);
 }
 
 
@@ -429,6 +442,8 @@ footer {
  *              MEDIA QUERIES              *
  *******************************************/
 @media (min-width: 768px) {
+
+
     .shop {
         main {
             width: 100%;
@@ -448,15 +463,19 @@ footer {
 }
 
 @media (min-width: 1024px) {
+
+
     .shop {
         main {
-
             width: 100%;
         }
         .product-container {
             /* show 3 products next to eachother */
             width: calc(33% - 24px);
+            height: 400px;
+
         }
+
     }
     .contact-form{
         width: 500px;
@@ -474,6 +493,7 @@ footer {
         .product-container {
             /* show 4 products next to eachother */
             width: calc(25% - 24px);
+
         }
     }
     .contact-form{
